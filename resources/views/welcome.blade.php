@@ -5,6 +5,8 @@
 @endsection
 
 @section('content')
+    Hello World
+    <!--
     <div class="row">
         <div class="col-md-6">
             <h3>Sign up</h3>
@@ -42,5 +44,6 @@
         </div>
 
     </div>
+    -->
 @endsection
 
