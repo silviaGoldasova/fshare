@@ -13,13 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/laravel_official', function () {
+    return view('laravel_welcome_page');
+});
+
+Route::get('/home', function () {
+    return view('home');
+})->name('homepage');
+
+
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
-
-Route::get('/home', function () {
-    return view('laravel_welcome_page');
-});
 
 Route::post('/signup', [
     'uses' => 'UserController@postSignUp',
@@ -43,7 +48,7 @@ Route::get('/dashboard', [
 ]);
 
 Route::post('/createoffer', [
-    'uses' => 'OfferController@offerCreateOffer',
+    'uses' => 'OfferController@postCreateOffer',
     'as' => 'offer.create',
     'middleware' => 'auth'
 ]);
@@ -54,9 +59,11 @@ Route::get('/deleteoffer/{offer_id}', [
     'middleware' => 'auth'
 ]);
 
-/*Route::post('/signup', function() {
-    echo "Hello World";
-})->name("signup");*/
+Route::post('/edit', [
+    'uses' => 'OfferController@postEditOffer',
+    'as' => 'edit'
+]);
+
 
 
 

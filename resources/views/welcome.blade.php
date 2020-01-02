@@ -7,7 +7,7 @@
 @section('content')
     @include('includes.message-block')
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-3 offset-2 sign-form">
             <h3>Sign up</h3>
             <form action="{{route('signup')}}" method="post">
                 <div class="form-grid {{ $errors->has('email') ? 'has-error' : '' }} ">
@@ -22,12 +22,12 @@
                     <label for="password">Password</label>
                     <input class="form-control" type="password" name="password" id="password" value="{{Request::old('password')}}">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="button_sign btn btn-outline-secondary">Submit</button>
                 <input type="hidden" name="_token" value="{{ Session::token() }}">
             </form>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-3 offset-1 sign-form">
             <h3>Sign in</h3>
             <form action="{{route('signin')}}" method="post">
                 <div class="form-grid {{ $errors->has('email') ? 'has-error' : '' }}">
@@ -38,7 +38,7 @@
                     <label for="password">Password</label>
                     <input class="form-control" type="password" name="password" id="password" value="{{Request::old('password')}}">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="button_sign btn btn-outline-secondary">Submit</button>
                 <input type="hidden" name="_token" value="{{ Session::token() }}">
             </form>
         </div>

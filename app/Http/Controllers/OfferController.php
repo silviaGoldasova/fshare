@@ -12,7 +12,7 @@ class OfferController extends Controller {
         return view('dashboard', ['offers' => $offers]);
     }
 
-    public function offerCreateOffer(Request $request) {
+    public function postCreateOffer(Request $request) {
         //validation
         $this->validate($request, [
             'body' => 'required|max:1000'
@@ -20,6 +20,7 @@ class OfferController extends Controller {
 
         $offer = new Offer();
         $offer->body = $request['body'];
+        $offer->commodity = $request['commodity'];
 
         $message = 'There was an error.';
         if ($request->user()->offers()->save($offer)){      //if successfully inserted
@@ -37,6 +38,20 @@ class OfferController extends Controller {
 
         $offer -> delete();
         return redirect()->route('dashboard')->with(['message' => 'Successfully deleated.']);
+    }
+
+    public function postEditOffer(Request $request) {
+        $this->validate($request, [
+            'body' => 'required'
+        ]);
+
+        $offer = Offer::find($request['offer_id']);
+        if (Auth::user() != $offer->user) {
+            return redirect()->back();
+        }
+        $offer->body = $request['body'];
+        $offer->update();
+        return response()->json(['updated_body' => $offer->body], 200);
     }
 
 }
