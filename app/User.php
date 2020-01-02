@@ -13,5 +13,10 @@ class User extends Model implements Authenticatable  {
     public function offers(){
         return $this->hasMany('App\Offer');
     }
+
+    public function interests(){
+        return $this->hasMany('App\Interest');
+    }
+
 }
 

@@ -4,13 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Offer extends Model
+class Interest extends Model
 {
     public function user(){
         return $this->belongsTo('App\User');
     }
 
-    public function interests(){
-        return $this->hasMany('App\Interest');
+    public function offer(){
+        return $this->belongsTo('App\Offer');
     }
 }
