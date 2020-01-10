@@ -18,5 +18,9 @@ class User extends Model implements Authenticatable  {
         return $this->hasMany('App\Interest');
     }
 
+    public function saveds(){
+        return $this->hasMany('App\Saved');
+    }
+
 }
 

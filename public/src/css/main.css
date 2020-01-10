@@ -103,3 +103,7 @@ h1 {
     font-size: 70px;
 }
 
+.button_selected{
+    background-color: #a25e63;
+    color: black;
+}

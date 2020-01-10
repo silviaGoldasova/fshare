@@ -7,7 +7,7 @@
     <div class="navbar-nav ml-auto" id="navbarSupportedContent">
         <ul class="nav navbar-nav navbar-right">
             <li nav-item>
-                <a class="nav-link" href="#">Account</a>
+                <a class="nav-link" href="{{ route('profile')  }}">My Profile</a>
             </li>
             <li nav-item>
                 <a class="nav-link" href="{{ route('home') }}">Sign In Log In</a>

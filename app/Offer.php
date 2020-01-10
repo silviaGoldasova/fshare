@@ -1,8 +1,9 @@
 <?php
 
 namespace App;
-
+use App\Interest;
 use Illuminate\Database\Eloquent\Model;
+
 
 class Offer extends Model
 {
@@ -13,4 +14,9 @@ class Offer extends Model
     public function interests(){
         return $this->hasMany('App\Interest');
     }
+
+    public function saveds(){
+        return $this->hasMany('App\Saved');
+    }
+
 }

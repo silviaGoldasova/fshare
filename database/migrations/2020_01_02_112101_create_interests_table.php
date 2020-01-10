@@ -18,7 +18,6 @@ class CreateInterestsTable extends Migration
             $table->timestamps();
             $table->integer('user_id');
             $table->integer('offer_id');
-
         });
     }
 

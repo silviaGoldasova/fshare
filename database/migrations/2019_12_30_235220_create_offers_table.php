@@ -19,6 +19,7 @@ class CreateOffersTable extends Migration
             $table->text('commodity');
             $table->text('body');
             $table->integer('user_id');
+            $table->integer('num_of_interested');
         });
     }
 

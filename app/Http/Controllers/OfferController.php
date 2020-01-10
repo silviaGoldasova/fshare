@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 
 use App\Offer;
+use App\Interest;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,6 +23,7 @@ class OfferController extends Controller {
         $offer = new Offer();
         $offer->body = $request['body'];
         $offer->commodity = $request['commodity'];
+        $offer->num_of_interested = 0;
 
         $message = 'There was an error.';
         if ($request->user()->offers()->save($offer)){      //if successfully inserted
@@ -53,5 +56,7 @@ class OfferController extends Controller {
         $offer->update();
         return response()->json(['updated_body' => $offer->body], 200);
     }
+
+
 
 }

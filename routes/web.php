@@ -64,6 +64,28 @@ Route::post('/edit', [
     'as' => 'edit'
 ]);
 
+Route::post('/loadinterest', [
+    'uses' => 'InteractionController@postInterestLoad',
+    'as' => 'interest.load',
+]);
 
+Route::post('/updateinterest', [
+    'uses' => 'InteractionController@postInterestUpdated',
+    'as' => 'interest.update',
+]);
 
+Route::post('/loadsaved', [
+    'uses' => 'InteractionController@postSavedLoad',
+    'as' => 'saved.load',
+]);
+
+Route::post('/updatesaved', [
+    'uses' => 'InteractionController@postSavedUpdated',
+    'as' => 'saved.update',
+]);
+
+route::get('/profile', [
+    'uses' => 'UserController@getProfile',
+    'as' => 'profile',
+]);
 
