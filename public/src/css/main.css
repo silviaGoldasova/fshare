@@ -84,7 +84,7 @@ h3 {
 .homepage_container{
     border: 2px white solid;
     position: absolute;
-    top: 50%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -106,4 +106,39 @@ h1 {
 .button_selected{
     background-color: #a25e63;
     color: black;
+}
+
+section{
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+.home_card{
+    position: absolute;
+    top: 170px;
+    background-color: #fff7ea;
+    border-radius: 10px;
+}
+
+p::first-line {
+    color: #9b2600;
+}
+
+.card{
+    margin-top: 25px;
+    margin-button: 25px;
+}
+
+.to_conversation{
+    font-style: italic;
+    color: #9b2600;
+}
+
+.page_heading{
+    text-align: center;
+}
+
+.page_subheading{
+    text-align: center;
+    font-size: x-large;
 }

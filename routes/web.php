@@ -87,5 +87,20 @@ Route::post('/updatesaved', [
 route::get('/profile', [
     'uses' => 'UserController@getProfile',
     'as' => 'profile',
+    'middleware' => 'auth'
 ]);
 
+route::get('/conversation', [
+    'uses' => 'ConversationController@getConversation',
+    'as' => 'conversation',
+]);
+
+route::post('/createconversation', [
+    'uses' => 'ConversationController@postCreateConversation',
+    'as' => 'conversation.create',
+]);
+
+route::post('/createmessage', [
+    'uses' => 'ConversationController@postCreateMessage',
+    'as' => 'message.create',
+]);

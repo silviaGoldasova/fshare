@@ -41,9 +41,11 @@
                     </div>
 
                     <div class="interaction" id="load_dashboard">
-                        <a type="button" data-offer_id="{{$offer->id}}" data-user_id="{{Auth::user()->id}}" class="interest_button btn btn-outline-secondary">Show Interest</a>
-                        <a type="button" data-offer_id="{{$offer->id}}" data-user_id="{{Auth::user()->id}}" class="saved_button btn btn-outline-secondary">Save For Later</a>
-                        <a type="button" class="btn btn-outline-secondary" href="#">Contact The Owner</a>
+                        @if(Auth::user() != $offer->user)
+                            <a type="button" data-offer_id="{{$offer->id}}" data-user_id="{{Auth::user()->id}}" class="interest_button btn btn-outline-secondary">Show Interest</a>
+                            <a type="button" data-offer_id="{{$offer->id}}" data-user_id="{{Auth::user()->id}}" class="saved_button btn btn-outline-secondary">Save For Later</a>
+                            <a type="button" class="btn btn-outline-secondary" href="#">Contact The Owner</a>
+                        @endif
                         @if(Auth::user() == $offer->user)
                             <a type="button" class="btn btn-outline-secondary edit" data-offer_id="{{$offer->id}}" data-offer_body="{{$offer->body}}" href="#edit-offer">Edit</a>
                             <!--<a data-toggle="modal"  href="#edit-modal">Edit</a>-->

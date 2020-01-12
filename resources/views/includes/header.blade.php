@@ -10,6 +10,9 @@
                 <a class="nav-link" href="{{ route('profile')  }}">My Profile</a>
             </li>
             <li nav-item>
+                <a class="nav-link" href="{{ route('dashboard')  }}">Dashboard</a>
+            </li>
+            <li nav-item>
                 <a class="nav-link" href="{{ route('home') }}">Sign In Log In</a>
             </li>
             <li nav-item>

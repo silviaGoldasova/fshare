@@ -2,6 +2,7 @@
 
 namespace App;
 use App\Interest;
+use App\Message;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -17,6 +18,10 @@ class Offer extends Model
 
     public function saveds(){
         return $this->hasMany('App\Saved');
+    }
+
+    public function contacts(){
+        return $this->hasMany('App\Message');
     }
 
 }

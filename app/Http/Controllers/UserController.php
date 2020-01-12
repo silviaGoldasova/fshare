@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Offer;
+use App\Saved;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -48,9 +50,12 @@ class UserController extends Controller {
     }
 
     public function getProfile() {
-        return view('');
-    }
+        $saved_off_ids_arr = Saved::where('user_id', '=', Auth::id())->pluck('offer_id');
+        $saved_offers = Offer::whereIn('id', $saved_off_ids_arr)->get();
+        $my_offers = Offer::where('user_id', '=', Auth::id() )->get();
 
+        return view('profile', ['saved_offers' => $saved_offers, 'my_offers' => $my_offers]);
+    }
 
 }
 
