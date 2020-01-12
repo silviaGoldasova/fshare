@@ -80,6 +80,8 @@ if($("#load_dashboard").length > 0) {       ///CHANGE
 function load_interested(){
 
     $interest_buttons_arr = document.getElementsByClassName("interest_button");
+    //console.log("$interest_buttons_arr: ", $interest_buttons_arr);
+    //Console.log("", $interest_buttons_arr[0].dataset['user_id']);
     user_id = parseInt($interest_buttons_arr[0].dataset['user_id']);
     $.ajax({
         method: 'POST',

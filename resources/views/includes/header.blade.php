@@ -6,16 +6,16 @@
 
     <div class="navbar-nav ml-auto" id="navbarSupportedContent">
         <ul class="nav navbar-nav navbar-right">
-            <li nav-item>
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('profile')  }}">My Profile</a>
             </li>
-            <li nav-item>
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('dashboard')  }}">Dashboard</a>
             </li>
-            <li nav-item>
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('home') }}">Sign In Log In</a>
             </li>
-            <li nav-item>
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('logout') }}">Logout</a>
             </li>
         </ul>
