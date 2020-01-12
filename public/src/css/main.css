@@ -22,9 +22,9 @@
 }
 
 .error{
-    border: 1px solid red;
+    color: black;
     background-color: #ff776d;
-    color: red;
+    border: 1px solid red;
 }
 
 .error ul {
@@ -34,9 +34,8 @@
 }
 
 .success{
-    border: 1px solid green;
     background-color: #acffa5;
-    color: green;
+    color: black;
 }
 
 .modal-title{
@@ -141,4 +140,9 @@ p::first-line {
 .page_subheading{
     text-align: center;
     font-size: x-large;
+}
+
+.error > ul > li{
+    padding: 7px;
+    text-align: center;
 }

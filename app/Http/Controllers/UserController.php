@@ -37,11 +37,10 @@ class UserController extends Controller {
             'password' => 'required'
         ]);
         if (Auth::attempt(['email'=>$request['email'], 'password'=>$request['password']])) {
-        //if (Auth::attempt(['email'=>$request['email']])) {
+            //if (Auth::attempt(['email'=>$request['email']])) {
             return redirect()->route('dashboard');
         }
         return redirect()->back();
-        //return redirect()->route('welcome');
     }
 
     public function getLogOut() {
@@ -53,7 +52,6 @@ class UserController extends Controller {
         $saved_off_ids_arr = Saved::where('user_id', '=', Auth::id())->pluck('offer_id');
         $saved_offers = Offer::whereIn('id', $saved_off_ids_arr)->get();
         $my_offers = Offer::where('user_id', '=', Auth::id() )->get();
-
         return view('profile', ['saved_offers' => $saved_offers, 'my_offers' => $my_offers]);
     }
 

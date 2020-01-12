@@ -88,7 +88,6 @@
         </div>
     </section>
 
-
     <!-- Edit Modal  -->
     <div class="modal fade" tabindex="-1" role="dialog" id="edit-modal">
         <div class="modal-dialog" role="document">
@@ -112,7 +111,6 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-
 
     <script>
         var token = '{{ Session::token() }}';

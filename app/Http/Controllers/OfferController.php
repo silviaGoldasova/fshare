@@ -17,7 +17,8 @@ class OfferController extends Controller {
     public function postCreateOffer(Request $request) {
         //validation
         $this->validate($request, [
-            'body' => 'required|max:1000'
+            'body' => 'required|max:1000',
+            'commodity' => 'required|max:25'
         ]);
 
         $offer = new Offer();

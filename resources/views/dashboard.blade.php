@@ -7,13 +7,13 @@
             <header><h3>Add a new offer.</h3></header>
             <form action="{{route('offer.create')}}" method="post">
                 <div class="form-group">
-                    <textarea class="form-control" name="body" id="new-offer" rows="5" placeholder="Your offer"></textarea>
+                    <textarea class="form-control" name="body" id="new-offer" rows="5" placeholder="Your offer"><?php echo htmlspecialchars(Request::old('body'));?></textarea>
                 </div>
 
                 <div class="form-inline">
                     <div class="form-group col-md-7">
                         <label for="commodity">Commodity: </label>
-                        <input type="text" class="form-control mx-2 col-md-8" name="commodity" id="commodity" placeholder="Commodity Name">
+                        <input type="text" class="form-control mx-2 col-md-8" name="commodity" id="commodity" placeholder="Commodity Name" value="{{Request::old('commodity')}}">
                     </div>
                     <div class="form-group mx-2">
                         <button type="submit" class="btn btn-outline-secondary submit_button">Post offer</button>
