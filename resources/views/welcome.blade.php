@@ -19,7 +19,7 @@
                     <input class="form-control" type="text" name="name" id="name" value="{{Request::old('name')}}">
                 </div>
                 <div class="form-grid {{ $errors->has('password') ? 'has-error' : '' }}">
-                    <label for="password">Password</label>
+                    <label for="password_up">Password</label>
                     <input class="form-control" type="password" name="password" id="password_up" value="{{Request::old('password')}}">
                 </div>
                 <button type="submit" class="button_sign btn btn-outline-secondary">Submit</button>
@@ -35,7 +35,7 @@
                     <input class="form-control" type="text" name="email_in" id="email_in" value="{{Request::old('email_in')}}">
                 </div>
                 <div class="form-grid {{ $errors->has('password') ? 'has-error' : '' }}">
-                    <label for="password">Password</label>
+                    <label for="password_in">Password</label>
                     <input class="form-control" type="password" name="password" id="password_in" value="{{Request::old('password')}}">
                 </div>
                 <button type="submit" class="button_sign btn btn-outline-secondary">Submit</button>
