@@ -47,6 +47,12 @@ Route::get('/dashboard', [
     'middleware' => 'auth'
 ]);
 
+Route::get('/dashboard/woJS', [
+    'uses' => 'OfferController@getDashboardWoJS',
+    'as' => 'dashboardWoJS',
+    'middleware' => 'auth'
+]);
+
 Route::post('/createoffer', [
     'uses' => 'OfferController@postCreateOffer',
     'as' => 'offer.create',
@@ -90,17 +96,27 @@ route::get('/profile', [
     'middleware' => 'auth'
 ]);
 
-route::get('/conversation', [
-    'uses' => 'ConversationController@getConversation',
-    'as' => 'conversation',
+route::get('/contact/{offer_id}', [
+    'uses' => 'InteractionController@getContact',
+    'as' => 'contact',
 ]);
 
-route::post('/createconversation', [
-    'uses' => 'ConversationController@postCreateConversation',
-    'as' => 'conversation.create',
+route::get('/mode', [
+    'uses' => 'SettingsController@getMode',
+    'as' => 'mode',
 ]);
 
-route::post('/createmessage', [
-    'uses' => 'ConversationController@postCreateMessage',
-    'as' => 'message.create',
+route::post('/modechange', [
+    'uses' => 'SettingsController@postMode',
+    'as' => 'mode.change',
+]);
+
+route::post('/filterdate', [
+    'uses' => 'OfferController@postFilterDate',
+    'as' => 'filter.date',
+]);
+
+route::post('/orderoffers', [
+    'uses' => 'OfferController@postOrderAlphabet',
+    'as' => 'order.offers',
 ]);

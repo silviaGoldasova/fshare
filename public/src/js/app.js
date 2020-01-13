@@ -1,5 +1,9 @@
 var offer_id = 0;
-var offer_body_elem = null
+var offer_body_elem = null;
+
+var offer_valid;
+var commodity_valid;
+var form_valid;
 
 $('a[href$="#edit-offer"]').on( "click", function(event) {
     event.preventDefault();
@@ -70,18 +74,52 @@ $('.saved_button').on('click', function(event) {
         });
 });
 
-if($("#load_dashboard").length > 0) {       ///CHANGE
+if($("#load_interaction_buttons").length > 0) {       ///CHANGE
     $(document).ready(function () {
         load_interested();
         load_saved();
+        load_validation();
     });
+}
+
+function load_validation() {
+
+    var offer_valid = document.getElementById('new-offer');
+    var commodity_valid = document.getElementById('commodity');
+    var form_valid = document.getElementsByTagName('form')[0];
+    const error_field = document.getElementsByClassName('error_js')[0];
+
+    offer_valid.addEventListener("input", function (event) {
+        if (offer_valid.validity.valid) {
+            error_field.innerHTML = "";
+            error_field.className = "";
+        }
+    }, false);
+    commodity_valid.addEventListener("input", function (event) {
+        if (commodity_valid.validity.valid) {
+            error_field.innerHTML = "";
+            error_field.className = "";
+        }
+    }, false);
+
+    form_valid.addEventListener("submit", function (event) {
+        if (offer_valid.value.length == 0) {
+            error_field.innerHTML = "Cannot create an empty offer.";
+            error_field.className = "error_js active error";
+            event.preventDefault();
+        }
+        if (commodity_valid.value.length == 0) {
+            error_field.innerHTML = "Cannot create an offer with no commodity set.";
+            error_field.className = "error_js active error";
+            event.preventDefault();
+        }
+    }, false);
+    console.log("length: ", commodity_valid.value.length);
 }
 
 function load_interested(){
 
     $interest_buttons_arr = document.getElementsByClassName("interest_button");
-    //console.log("$interest_buttons_arr: ", $interest_buttons_arr);
-    //Console.log("", $interest_buttons_arr[0].dataset['user_id']);
     user_id = parseInt($interest_buttons_arr[0].dataset['user_id']);
     $.ajax({
         method: 'POST',
@@ -138,11 +176,5 @@ function remove_interest(element) {
     element.classList.remove('button_selected');
     element.innerText = "Show Interest";
 }
-
-
-//articles have a class 'offer', which have a class 'interaction',
-// which have 5 <a> tags, from which we select the 3rd child by using eq(2),
-//numbered from 0,
-//on ('name_of_the_event', function_to_execute_at_the_event)
 
 

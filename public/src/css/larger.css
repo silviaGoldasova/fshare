@@ -1,3 +1,7 @@
+body {
+    font-size: larger;
+}
+
 .new-offer {
     padding: 16px 0;
     border-bottom: 1px solid #ccc;
@@ -176,8 +180,4 @@ p::first-line {
 
 span{
     float: left; width: 800px;
-}
-
-.filter {
-    margin: auto;
 }

@@ -2,8 +2,6 @@
 
 namespace App;
 
-//protected $table = 'users2';
-
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 

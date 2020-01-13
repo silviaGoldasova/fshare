@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Offer;
 use App\Interest;
 use App\User;
+use \Datetime;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,7 +13,13 @@ class OfferController extends Controller {
 
     public function getDashboard() {
         $offers = Offer::orderBy('created_at', 'desc')->get();
-        return view('dashboard', ['offers' => $offers]);
+        $date = "0";
+        return view('dashboard', ['offers' => $offers, 'date' => $date]);
+    }
+
+    public function getDashboardWoJS() {
+        $offers = Offer::orderBy('created_at', 'desc')->get();
+        return view('dashboardWoJS', ['offers' => $offers]);
     }
 
     public function postCreateOffer(Request $request) {
@@ -58,6 +66,19 @@ class OfferController extends Controller {
         return response()->json(['updated_body' => $offer->body], 200);
     }
 
+    public function postFilterDate(Request $request){
+        $input_date = $request['example-date-input'];
+        $input_date .= " 00:00:00";
+        $formatted_date = Carbon::createFromFormat('Y-m-d H:i:s', $input_date);
 
+        $offers = Offer::whereDate('created_at', '>', $formatted_date)->get();
+
+        return view('dashboard', ['offers' => $offers]);
+    }
+
+    public function postOrderAlphabet(Request $request){
+        $offers = Offer::orderBy('commodity')->get();
+        return view('dashboard', ['offers' => $offers]);
+    }
 
 }

@@ -1,5 +1,11 @@
 @extends('layouts/prototype')
 
+@section('head')
+    <noscript>
+        <meta http-equiv="refresh" content="0; URL='{{route('dashboardWoJS')}}'">
+    </noscript>
+@endsection
+
 @section('content')
     @include('includes.message-block')
     <section class="row new-offer">
@@ -24,6 +30,46 @@
         </div>
     </section>
 
+    <section>
+        <div class='row bigger_margin' id="wrapper">
+            <div class="col-md-3 offset-5">
+                <span aria-live="polite">All fields are required.</span>
+            </div>
+            <div class="col-md-6 error offset-3">
+                <span class="row error_js " aria-live="polite"></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="row">
+        <div class='col-md-6 offset-3'>
+            <header class="offers-header"><h3>Apply a filter to the posted offers</h3></header>
+            <form action="{{route('filter.date')}}" method="post">
+                <div class="form-group">
+                    <div class="form-group row">
+                        <label for="example-date-input" class="col-7 col-form-label"><h5>Show offers added after the date: </h5></label>
+                        <div class="col-5">
+                            <input class="form-control" type="date" value="2020-01-20" id="example-date-input" name="example-date-input" pattern="\d{4}-\d{2}-\d{2}">
+                        </div>
+                    </div>
+                    <div class="interaction row filter" id="load_interaction_buttons">
+                        <button type="submit" class="col-md-4 offset-8 btn btn-outline-secondary submit_button">Apply the date filter</button>
+                        <input type="hidden" value="{{Session::token()}}" name="_token">
+                    </div>
+                </div>
+            </form>
+            <form action="{{route('order.offers')}}" method="post">
+                <div class="form-group">
+                    <div class="form-group row">
+                        <label for="example-date-input" class="col-8 col-form-label"><h5>Show offers in the alphabetical order: </h5></label>
+                        <input type="hidden" value="{{Session::token()}}" name="_token">
+                    </div>
+                    <button type="submit" class="col-md-4 offset-8 btn btn-outline-secondary submit_button">Apply the date filter</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
     <section class="row offers">
         <div class="col-md-6 offset-3">
             <header class="offers-header"><h3>Neighbours' offers</h3></header>
@@ -33,28 +79,25 @@
                     <div class="card">
                         <h5 class="card-header">Neighbour {{$offer->user->name}} is offering {{$offer->commodity}}.</h5>
                         <div class="card-body">
-                            <p card-text>{{$offer->body}}</p>
+                            <p class="card-text">{{$offer->body}}</p>
                             <div class="info">
                                 Posted by {{$offer->user->name}} on {{$offer->created_at}}, <div id="{{$offer->id}}"> {{$offer->num_of_interested }}  {{ $offer->num_of_interested == 1 ? "person is" : "people are" }} interested in the offer </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="interaction" id="load_dashboard">
+                    <div class="interaction" id="load_interaction_buttons">
                         @if(Auth::user() != $offer->user)
                             <a type="button" data-offer_id="{{$offer->id}}" data-user_id="{{Auth::user()->id}}" class="interest_button btn btn-outline-secondary">Show Interest</a>
                             <a type="button" data-offer_id="{{$offer->id}}" data-user_id="{{Auth::user()->id}}" class="saved_button btn btn-outline-secondary">Save For Later</a>
-                            <a type="button" class="btn btn-outline-secondary" href="#">Contact The Owner</a>
+                            <a type="button" class="btn btn-outline-secondary" href="{{ route('contact', ['offer_id' => $offer->id]) }}">Contact The Owner</a>
                         @endif
                         @if(Auth::user() == $offer->user)
                             <a type="button" class="btn btn-outline-secondary edit" data-offer_id="{{$offer->id}}" data-offer_body="{{$offer->body}}" href="#edit-offer">Edit</a>
-                            <!--<a data-toggle="modal"  href="#edit-modal">Edit</a>-->
                             <a type="button" class="btn btn-outline-secondary" href="{{ route('offer.delete', ['offer_id' => $offer->id]) }}">Delete</a>
                         @endif
                     </div>
                 </article>
             @endforeach
-
 
         </div>
     </section>

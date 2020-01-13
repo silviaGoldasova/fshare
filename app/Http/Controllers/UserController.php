@@ -12,8 +12,8 @@ class UserController extends Controller {
     public function postSignUp(Request $request) {
         $this -> validate($request, [
             'email_up' => 'required|email|unique:users,email',
-            'name' => 'required|max:120',
-            'password' => 'required|min:4'
+            'name' => 'required|regex:/^[a-zA-Z]+$/u|max:120',
+            'password' => 'required|min:5'
         ]);
         $email = $request['email_up'];
         $name = $request['name'];
@@ -40,7 +40,9 @@ class UserController extends Controller {
             //if (Auth::attempt(['email'=>$request['email']])) {
             return redirect()->route('dashboard');
         }
-        return redirect()->back();
+        $message = "Incorrect login information.";
+        $is_error = 1;
+        return redirect()->back()->with(['message' => $message, 'is_error' => $is_error]);
     }
 
     public function getLogOut() {

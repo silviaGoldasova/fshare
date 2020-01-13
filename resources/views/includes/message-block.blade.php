@@ -14,9 +14,15 @@
 
 @if(Session::has('message'))
         <div class='row'>
-            <div class="col-md-4 offset-4 success">
-                {{Session::get('message')}}
-            </div>
+            @if(Session::has('is_error'))
+                <div class="col-md-4 offset-4 error">
+                    {{Session::get('message')}}
+                </div>
+            @else
+                <div class="col-md-4 offset-4 success">
+                    {{Session::get('message')}}
+                </div>
+            @endif
         </div>
 @endif
 

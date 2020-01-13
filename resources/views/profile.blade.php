@@ -3,6 +3,11 @@
 @section('content')
     @include('includes.message-block')
 
+    <noscript>
+        @php
+            $is_js_available = -1;
+        @endphp
+    </noscript>
 
     <section class="row h-100">
         <div class="col-sm-12">
@@ -18,7 +23,6 @@
             <div class="list-group">
                 <a href="#saved_offers_header" class="list-group-item list-group-item-action">Saved Offers</a>
                 <a href="#my_offers_header" class="list-group-item list-group-item-action">My Offers</a>
-                <a href="#my_conversations_header" class="list-group-item list-group-item-action">My conversations</a>
             </div>
         </div>
     </section>
@@ -38,11 +42,14 @@
                         </div>
                     </div>
 
-                    <div class="interaction">
+                    @if($is_js_available == -1)
+                        <a type="button" class="btn btn-outline-secondary" href="{{ route('contact', ['offer_id' => $offer->id]) }}">Contact The Owner</a>
+                    @else
                         <a type="button" data-offer_id="{{$offer->id}}" data-user_id="{{Auth::user()->id}}" class="interest_button btn btn-outline-secondary">Show Interest</a>
                         <a type="button" data-offer_id="{{$offer->id}}" data-user_id="{{Auth::user()->id}}" class="saved_button btn btn-outline-secondary">Save For Later</a>
-                        <a type="button" class="btn btn-outline-secondary" href="#">Contact The Owner</a>
-                    </div>
+                        <a type="button" class="btn btn-outline-secondary" href="{{ route('contact', ['offer_id' => $offer->id]) }}">Contact The Owner</a>
+                    @endif
+
                 </article>
             @endforeach
         </div>
@@ -63,10 +70,13 @@
                         </div>
                     </div>
 
-                    <div class="interaction">
+                    @if($is_js_available == -1)
+                        <a type="button" class="btn btn-outline-secondary" href="{{ route('offer.delete', ['offer_id' => $offer->id]) }}">Delete</a>
+                    @else
                         <a type="button" class="btn btn-outline-secondary edit" data-offer_id="{{$offer->id}}" data-offer_body="{{$offer->body}}" href="#edit-offer">Edit</a>
                         <a type="button" class="btn btn-outline-secondary" href="{{ route('offer.delete', ['offer_id' => $offer->id]) }}">Delete</a>
-                    </div>
+                    @endif
+
                 </article>
             @endforeach
         </div>
@@ -81,10 +91,9 @@
                 <h5 class="card-header">Header</h5>
                 <div class="card-body">
                     <p card-text></p>
-                    <a href="#" class="to_conversation">-> Go to the conversation</a>
+                    <a href="#" class="to_conversation">-> Contact the seller.</a>
                 </div>
             </div>
-
         </div>
     </section>
 

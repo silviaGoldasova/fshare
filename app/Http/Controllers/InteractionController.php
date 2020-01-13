@@ -8,10 +8,12 @@ use App\Saved;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class InteractionController extends Controller {
+class InteractionController extends Controller
+{
 
 
-    public function postInterestLoad(Request $request) {
+    public function postInterestLoad(Request $request)
+    {
         $user_id = $request['user_id'];
         $offers = Offer::all();
 
@@ -29,7 +31,7 @@ class InteractionController extends Controller {
             ])->first();
             if (empty($interest_instance)) {
                 $is_marked = false;
-            } else{
+            } else {
                 $is_marked = true;
             }
             $interests_arr = array_add($interests_arr, $offer->id, $is_marked);
@@ -38,7 +40,8 @@ class InteractionController extends Controller {
     }
 
 
-    public function postInterestUpdated(Request $request){
+    public function postInterestUpdated(Request $request)
+    {
         $offer = Offer::find($request['offer_id']);
         $logged_user = Auth::user();
         $logged_user_id = Auth::id();
@@ -60,8 +63,7 @@ class InteractionController extends Controller {
             $to_add_interest = 1;
             $interest->save();
             $offer->save();
-        }
-        else {
+        } else {
             $interest->delete();
             $to_add_interest = -1;
             $offer->num_of_interested = $offer->num_of_interested - 1;
@@ -73,7 +75,8 @@ class InteractionController extends Controller {
         //return response()->json([], 200);
     }
 
-    public function postSavedLoad(Request $request) {
+    public function postSavedLoad(Request $request)
+    {
         $user_id = $request['user_id'];
         $offers = Offer::all();
 
@@ -91,7 +94,7 @@ class InteractionController extends Controller {
             ])->first();
             if (empty($saved_instance)) {
                 $is_saved = false;
-            } else{
+            } else {
                 $is_saved = true;
             }
             $arr_saved = array_add($arr_saved, $offer->id, $is_saved);
@@ -99,7 +102,8 @@ class InteractionController extends Controller {
         return response()->json(['arr_saved' => $arr_saved], 200);
     }
 
-    public function postSavedUpdated(Request $request) {
+    public function postSavedUpdated(Request $request)
+    {
         $offer_id = $request['offer_id'];
         $user_id = $request['user_id'];
         $saved = Saved::where([
@@ -121,12 +125,17 @@ class InteractionController extends Controller {
             $saved->save();
             $to_mark = 1;
             //$offer = Offer::find($offer_id)->first();
-        }
-        else {
+        } else {
             $saved->delete();
             $to_mark = -1;
         }
         return response()->json(['to_mark' => $to_mark], 200);
+    }
+
+    public function getContact($offer_id) {
+        $offer = Offer::find($offer_id);
+        $is_js_available = 0;
+        return view('contact', ['offer' => $offer, 'is_js_available' => $is_js_available]);
     }
 
 }

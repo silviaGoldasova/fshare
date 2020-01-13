@@ -47,12 +47,14 @@
 }
 
 .card-header, .submit_button, .button_sign{
-    background-color: #eee1e1;
+    background-color: #fffcb7;
+    color: #001128;
 }
 
 .btn-outline-secondary:hover,
 .submit_button:hover{
-    background-color: #a25e63;
+    background-color: whitesmoke;
+    color: black;
 }
 
 .offers-header {
@@ -77,7 +79,8 @@ h3 {
 }
 
 .navbar{
-    background-color: #fff7ea;
+    background-color: #001a1b;
+    color: #aaaaaa;
 }
 
 .homepage_container{
@@ -103,8 +106,8 @@ h1 {
 }
 
 .button_selected{
-    background-color: #a25e63;
-    color: black;
+    background-color: navajowhite;
+    color: black !important;
 }
 
 section{
@@ -170,14 +173,23 @@ p::first-line {
     border: none;
 }
 
+body {
+    background-color: #001128;
+    color: white;
+}
+
+nav a{
+    color: white !important;
+}
+
+nav .navbar-nav li a{
+    color: white !important;
+}
+
 .bigger_margin{
     margin: 20px;
 }
 
 span{
     float: left; width: 800px;
-}
-
-.filter {
-    margin: auto;
 }
