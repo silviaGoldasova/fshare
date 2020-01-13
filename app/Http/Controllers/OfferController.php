@@ -81,4 +81,7 @@ class OfferController extends Controller {
         return view('dashboard', ['offers' => $offers]);
     }
 
+    public function postOrderDate(Request $request){
+        return redirect()->route('dashboard');
+    }
 }

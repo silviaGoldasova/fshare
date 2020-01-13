@@ -120,3 +120,8 @@ route::post('/orderoffers', [
     'uses' => 'OfferController@postOrderAlphabet',
     'as' => 'order.offers',
 ]);
+
+route::post('/orderoffersdate', [
+    'uses' => 'OfferController@postOrderDate',
+    'as' => 'order.offers.date',
+]);
