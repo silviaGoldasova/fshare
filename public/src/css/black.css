@@ -194,3 +194,13 @@ nav .navbar-nav li a{
 span{
     float: left; width: 800px;
 }
+
+
+.pagination{
+    text-align: center;
+}
+
+
+.page-link{
+    width: 100%;
+}

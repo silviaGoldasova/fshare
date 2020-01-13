@@ -107,7 +107,11 @@
                     </div>
                 </article>
             @endforeach
-
+            <section class="row">
+                <div class="col-md-12">
+                    {{ $offers->links() }}
+                </div>
+            </section>
         </div>
     </section>
 

@@ -12,9 +12,8 @@ use Illuminate\Support\Facades\Auth;
 class OfferController extends Controller {
 
     public function getDashboard() {
-        $offers = Offer::orderBy('created_at', 'desc')->get();
-        $date = "0";
-        return view('dashboard', ['offers' => $offers, 'date' => $date]);
+        $offers = Offer::orderBy('created_at', 'desc')->paginate(5);
+        return view('dashboard', ['offers' => $offers]);
     }
 
     public function getDashboardWoJS() {
