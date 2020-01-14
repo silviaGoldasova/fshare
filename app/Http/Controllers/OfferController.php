@@ -9,15 +9,23 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
+/*
+ * OfferController
+ * role: to provide the view for the routes concerning the management of the offers with correct data from the database,
+ * includes creation of the offers, editing, ordering
+ */
+
 class OfferController extends Controller {
 
+    //gets view for the dashboard, provides it with offers to load
     public function getDashboard() {
         $offers = Offer::orderBy('created_at', 'desc')->paginate(5);
         return view('dashboard', ['offers' => $offers]);
     }
 
     public function getDashboardWoJS() {
-        $offers = Offer::orderBy('created_at', 'desc')->get();
+        $offers = Offer::orderBy('created_at', 'desc')->paginate(5);
         return view('dashboardWoJS', ['offers' => $offers]);
     }
 
@@ -70,13 +78,13 @@ class OfferController extends Controller {
         $input_date .= " 00:00:00";
         $formatted_date = Carbon::createFromFormat('Y-m-d H:i:s', $input_date);
 
-        $offers = Offer::whereDate('created_at', '>', $formatted_date)->get();
+        $offers = Offer::whereDate('created_at', '>', $formatted_date)->paginate(5);
 
         return view('dashboard', ['offers' => $offers]);
     }
 
     public function postOrderAlphabet(Request $request){
-        $offers = Offer::orderBy('commodity')->get();
+        $offers = Offer::orderBy('commodity')->paginate(5);
         return view('dashboard', ['offers' => $offers]);
     }
 

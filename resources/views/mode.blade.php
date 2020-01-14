@@ -1,3 +1,8 @@
+<!--
+mode blade file
+= view for the choosing the preferred mode of the web page
+-->
+
 @extends('layouts/prototype')
 
 @section('content')

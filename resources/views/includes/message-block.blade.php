@@ -1,3 +1,8 @@
+<!--
+message-block blade file
+- specifies the errors and notes displayed as a result of the user's actions
+-->
+
 @if(count($errors) > 0)
     <div class='row'>
         <div class="col-md-4 offset-4 error">

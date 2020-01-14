@@ -1,3 +1,7 @@
+<!--
+part of the every Laravel project
+-->
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>

@@ -1,3 +1,9 @@
+/*
+CSS file print.css
+-  sets the styles for the html elements when rendering the pages in the media print mode
+- the styles exclude using any
+ */
+
 @media print {
 
     .new-offer {

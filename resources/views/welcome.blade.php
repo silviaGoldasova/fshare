@@ -1,3 +1,8 @@
+<!--
+welcome sign up / sign in blade file
+= view for the sign up and sign in forms
+-->
+
 @extends('layouts.prototype')
 
 @section('title')

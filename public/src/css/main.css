@@ -1,4 +1,16 @@
+/*
+CSS file main.css
+-  sets the styles for the html elements when rendering the pages in the normal, that is, light visual mode
+ */
+
+@media only screen and (max-width: 768px) {
+    [class*="col-"] {
+        width: 100%;
+    }
+}
+
 @media screen {
+
     .new-offer {
         padding: 16px 0;
         border-bottom: 1px solid #ccc;
@@ -192,5 +204,19 @@
     .page-link{
         width: 100%;
     }
+
+    .footer {
+        position: fixed;
+        bottom: 0;
+        height: 25px; /* Set the fixed height of the footer here */
+        line-height: 25px; /* Vertically center the text there */
+        background-color: #fff7ea;
+        text-align: center;
+    }
+
+    .body{
+        margin-bottom: 25px;
+    }
 }
+
 

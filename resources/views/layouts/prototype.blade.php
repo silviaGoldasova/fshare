@@ -1,3 +1,9 @@
+<!--
+prototype blade file
+- serves as the template for the html code, only as far as the the general structure of a page
+- keeps in one place (almost) all of the links to the external libraries used - javascript, jquery, bootstrap
+-->
+
 <!DOCTYPE html>
 
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -31,6 +37,8 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
         <script src="{{ URL::to('src/js/app.js') }}"></script>
+
+        @include ('includes.footer')
     </body>
 </html>
 

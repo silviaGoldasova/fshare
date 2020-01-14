@@ -1,3 +1,8 @@
+<!--
+contact blade file
+= view for the page showing seller's email
+-->
+
 @extends('layouts/prototype')
 
 @section('content')

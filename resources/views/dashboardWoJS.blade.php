@@ -1,3 +1,12 @@
+<!--
+dashboardWoJS blade file (dashboard without javascript)
+= view for the page when javascript is turned off in the browser, with functions:
+    - create an offer
+    - show all offers
+    - contact a seller
+    - delete own offer
+-->
+
 @extends('layouts/prototype')
 
 @section('content')

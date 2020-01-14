@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
+ * web.php
+ * - specifies routes - which controller and which method of the controller to use
+ */
+
 Route::get('/laravel_official', function () {
     return view('laravel_welcome_page');
 });
@@ -47,6 +52,7 @@ Route::get('/dashboard', [
     'middleware' => 'auth'
 ]);
 
+// route for rendering the view of the dashboard without Javascript enables
 Route::get('/dashboard/woJS', [
     'uses' => 'OfferController@getDashboardWoJS',
     'as' => 'dashboardWoJS',
@@ -118,7 +124,7 @@ route::post('/filterdate', [
 
 route::post('/orderoffers', [
     'uses' => 'OfferController@postOrderAlphabet',
-    'as' => 'order.offers',
+    'as' => 'order.offers.alphabet',
 ]);
 
 route::post('/orderoffersdate', [

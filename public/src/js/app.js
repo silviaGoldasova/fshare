@@ -1,3 +1,10 @@
+/*
+app.js
+- includes almost all javascript code used in the project (the rest is in the validation.js)
+- includes ajax rendering of the 'show interest' and 'save for later' buttons
+- includes javascript validation of the form for creation of a new offer
+*/
+
 var offer_id = 0;
 var offer_body_elem = null;
 
@@ -114,7 +121,6 @@ function load_validation() {
             event.preventDefault();
         }
     }, false);
-    console.log("length: ", commodity_valid.value.length);
 }
 
 function load_interested(){

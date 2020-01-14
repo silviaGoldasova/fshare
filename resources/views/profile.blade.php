@@ -1,3 +1,9 @@
+<!--
+profile blade file
+= view for the profile information
+- includes name of the user, his saved offers and his offers
+-->
+
 @extends('layouts/prototype')
 
 @section('content')
@@ -79,21 +85,6 @@
 
                 </article>
             @endforeach
-        </div>
-    </section>
-
-    <section class="row">
-        <div class="col-md-6 offset-3">
-            <header class="offers-header" id="my_conversations_header"><h3>My conversations</h3></header>
-            <!-- for each conversation foreach($saved_offers as $offer)
-        <article> -->
-            <div class="card">
-                <h5 class="card-header">Header</h5>
-                <div class="card-body">
-                    <p card-text></p>
-                    <a href="#" class="to_conversation">-> Contact the seller.</a>
-                </div>
-            </div>
         </div>
     </section>
 

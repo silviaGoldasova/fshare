@@ -1,3 +1,9 @@
+<!--
+home blade file
+= view for the homepage
+- introduces the user to the web app
+-->
+
 <!DOCTYPE html>
 
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">

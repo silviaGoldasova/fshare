@@ -1,3 +1,15 @@
+<!--
+dashboard blade file
+= view for the page with functions:
+    - create an offer
+    - show all offers
+    - edit an existing own offer
+    - show interest
+    - save an offer for later
+    - contact a seller
+    - delete own offer
+-->
+
 @extends('layouts/prototype')
 
 @section('head')
@@ -58,7 +70,7 @@
                     </div>
                 </div>
             </form>
-            <form action="{{route('order.offers')}}" method="post">
+            <form action="{{route('order.offers.alphabet')}}" method="post">
                 <div class="form-group">
                     <div class="form-group row">
                         <label for="example-date-input" class="col-8 col-form-label"><h5>Show offers in the alphabetical order: </h5></label>
@@ -111,6 +123,7 @@
                 <div class="col-md-12">
                     {{ $offers->links() }}
                 </div>
+                    * Pagination can be used only if not no filter was used
             </section>
         </div>
     </section>

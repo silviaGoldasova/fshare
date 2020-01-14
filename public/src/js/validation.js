@@ -1,3 +1,10 @@
+/*
+validation.js
+- features validation of every field in the sign up and sign in form
+- validation consists of checking the length of the inputs, the inclusion of special characters
+- in case of an incorrect input, an error box is displayed
+ */
+
 const form_up  = document.getElementsByTagName('form')[0];
 const email_up = document.getElementById('email_up');
 const name = document.getElementById('name');
@@ -95,6 +102,5 @@ form_in.addEventListener("submit", function (event) {
         error_field.className = "error_js active";
         event.preventDefault();
     }
-
 
 }, false);

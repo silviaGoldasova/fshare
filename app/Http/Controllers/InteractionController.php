@@ -8,9 +8,15 @@ use App\Saved;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
+/*
+ * InteractionController
+ * role: to provide the view for the routes concerning the interaction of the user with the offers,
+ * such as interests, saves
+ */
+
 class InteractionController extends Controller
 {
-
 
     public function postInterestLoad(Request $request)
     {

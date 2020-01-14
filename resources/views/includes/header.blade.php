@@ -1,3 +1,8 @@
+<!--
+header blade file
+- specifies the header part of the view to be displayed
+-->
+
 <nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand display-2" href="{{ route('homepage') }}">Food Sharing</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
