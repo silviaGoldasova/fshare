@@ -70,11 +70,10 @@ dashboard blade file
                     </div>
                 </div>
             </form>
-            <form action="{{route('order.offers.alphabet')}}" method="post">
+            <form action="{{route('order.offers.alphabet')}}" method="get">
                 <div class="form-group">
                     <div class="form-group row">
                         <label for="example-date-input" class="col-8 col-form-label"><h5>Show offers in the alphabetical order: </h5></label>
-                        <input type="hidden" value="{{Session::token()}}" name="_token">
                     </div>
                     <button type="submit" class="col-md-4 offset-8 btn btn-outline-secondary submit_button">Order offers (aphabet)</button>
                 </div>
