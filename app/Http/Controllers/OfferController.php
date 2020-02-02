@@ -73,22 +73,31 @@ class OfferController extends Controller {
         return response()->json(['updated_body' => $offer->body], 200);
     }
 
-    public function postFilterDate(Request $request){
-        $input_date = $request['example-date-input'];
-        $input_date .= " 00:00:00";
-        $formatted_date = Carbon::createFromFormat('Y-m-d H:i:s', $input_date);
-
-        $offers = Offer::whereDate('created_at', '>', $formatted_date)->paginate(5);
-
-        return view('dashboard', ['offers' => $offers]);
-    }
-
-    public function postOrderAlphabet(Request $request){
+    public function getOrderAlphabet(){
         $offers = Offer::orderBy('commodity')->paginate(5);
+        //return redirect()->route('dashboard.filter')->with(['offers' => $offers]);
         return view('dashboard', ['offers' => $offers]);
     }
 
     public function postOrderDate(Request $request){
         return redirect()->route('dashboard');
     }
+
+    public function postFilterDate(Request $request){
+        $input_date = $request['example-date-input'];
+        $input_date .= " 00:00:00";
+        $formatted_date = Carbon::createFromFormat('Y-m-d H:i:s', $input_date);
+
+        //$offers = Offer::whereDate('created_at', '>', $formatted_date)->paginate(5);
+        $request->session()->put('date', $formatted_date);
+        return redirect()->route('dashboard.filter');
+        //return redirect()->route('dashboard.filter')->with(['date' => $formatted_date]);
+    }
+
+    public function getDashboardWithFilter() {
+        $date = request()->session()->get( 'date' );
+        $offers = Offer::whereDate('created_at', '>', $date)->paginate(5);
+        return view('dashboard', ['offers' => $offers]);
+    }
+
 }

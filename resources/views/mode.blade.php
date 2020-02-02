@@ -22,25 +22,25 @@ mode blade file
                         <legend class="col-form-label col-sm-2 pt-0">Available modes:</legend>
                         <div class="col-sm-10">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="light_mode" value="light" checked>
+                                <input class="form-check-input" type="radio" name="gridRadios" id="light_mode" value="light" @if ( Session::get('mode') == NULL or Session::get('mode') == "light") checked @endif >
                                 <label class="form-check-label" for="gridRadios1">
                                     Light mode
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="dark_mode" value="dark">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="dark_mode" value="dark" @if (Session::get('mode') == "dark") checked @endif >
                                 <label class="form-check-label" for="gridRadios2">
                                     Dark mode
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="black&white" value="black">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="black&white" value="black" @if (Session::get('mode') == "black") checked @endif >
                                 <label class="form-check-label" for="gridRadios3">
                                     Black & White mode
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="larger" value="larger">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="larger" value="larger" @if (Session::get('mode') == "larger") checked @endif >
                                 <label class="form-check-label" for="gridRadios3">
                                     Larger text
                                 </label>

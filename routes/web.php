@@ -107,6 +107,26 @@ route::get('/contact/{offer_id}', [
     'as' => 'contact',
 ]);
 
+route::post('/filterdate', [
+    'uses' => 'OfferController@postFilterDate',
+    'as' => 'filter.date',
+]);
+
+route::get('/orderoffers', [
+    'uses' => 'OfferController@getOrderAlphabet',
+    'as' => 'order.offers.alphabet',
+]);
+
+route::post('/orderoffersdate', [
+    'uses' => 'OfferController@postOrderDate',
+    'as' => 'order.offers.date',
+]);
+
+route::get('/dashboardfilter', [
+    'uses' => 'OfferController@getDashboardWithFilter',
+    'as' => 'dashboard.filter',
+]);
+
 route::get('/mode', [
     'uses' => 'SettingsController@getMode',
     'as' => 'mode',
@@ -117,17 +137,3 @@ route::post('/modechange', [
     'as' => 'mode.change',
 ]);
 
-route::post('/filterdate', [
-    'uses' => 'OfferController@postFilterDate',
-    'as' => 'filter.date',
-]);
-
-route::post('/orderoffers', [
-    'uses' => 'OfferController@postOrderAlphabet',
-    'as' => 'order.offers.alphabet',
-]);
-
-route::post('/orderoffersdate', [
-    'uses' => 'OfferController@postOrderDate',
-    'as' => 'order.offers.date',
-]);

@@ -123,7 +123,6 @@ dashboard blade file
                 <div class="col-md-12">
                     {{ $offers->links() }}
                 </div>
-                    * Pagination can be used only if not no filter was used
             </section>
         </div>
     </section>

@@ -126,41 +126,45 @@ function load_validation() {
 function load_interested(){
 
     $interest_buttons_arr = document.getElementsByClassName("interest_button");
-    user_id = parseInt($interest_buttons_arr[0].dataset['user_id']);
-    $.ajax({
-        method: 'POST',
-        url: urlInterestLoad,
-        data: {user_id: user_id, _token: token}
-    })
-        .done (function (answer) {
-            $interests_arr = answer['interests_arr'];
-            //console.log("interests_arr: ", $interests_arr);
-            for (var i = 0; i < $interest_buttons_arr.length; i++) {
-                $button_offer_id = parseInt($interest_buttons_arr[i].dataset['offer_id']);
-                if ($interests_arr[$button_offer_id] == true) {
-                    mark_as_interested($interest_buttons_arr[i]);
-                }
-            }
+    if ($interest_buttons_arr.length != 0) {
+        user_id = parseInt($interest_buttons_arr[0].dataset['user_id']);
+        $.ajax({
+            method: 'POST',
+            url: urlInterestLoad,
+            data: {user_id: user_id, _token: token}
         })
+            .done(function (answer) {
+                $interests_arr = answer['interests_arr'];
+                //console.log("interests_arr: ", $interests_arr);
+                for (var i = 0; i < $interest_buttons_arr.length; i++) {
+                    $button_offer_id = parseInt($interest_buttons_arr[i].dataset['offer_id']);
+                    if ($interests_arr[$button_offer_id] == true) {
+                        mark_as_interested($interest_buttons_arr[i]);
+                    }
+                }
+            })
+    }
 }
 
 function load_saved(){
     $saved_button = document.getElementsByClassName("saved_button");
-    user_id = parseInt($saved_button[0].dataset['user_id']);
-    $.ajax({
-        method: 'POST',
-        url: urlSavedLoad,
-        data: {user_id: user_id, _token: token}
-    })
-        .done (function (answer) {
-            $saved_arr = answer['arr_saved'];
-            for (var i = 0; i < $saved_button.length; i++) {
-                $button_offer_id = parseInt($saved_button[i].dataset['offer_id']);
-                if ($saved_arr[$button_offer_id] == true) {
-                    mark_as_saved($saved_button[i]);
-                }
-            }
+    if ($saved_button.length != 0) {
+        user_id = parseInt($saved_button[0].dataset['user_id']);
+        $.ajax({
+            method: 'POST',
+            url: urlSavedLoad,
+            data: {user_id: user_id, _token: token}
         })
+            .done(function (answer) {
+                $saved_arr = answer['arr_saved'];
+                for (var i = 0; i < $saved_button.length; i++) {
+                    $button_offer_id = parseInt($saved_button[i].dataset['offer_id']);
+                    if ($saved_arr[$button_offer_id] == true) {
+                        mark_as_saved($saved_button[i]);
+                    }
+                }
+            })
+    }
 }
 
 function mark_as_saved(element) {
